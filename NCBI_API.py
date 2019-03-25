@@ -36,30 +36,23 @@ handle.close()
 #the id from NCBI you want to fetch enter string of id
 id_rec = record["IdList"][0]
 handle2 = Entrez.efetch(db="nucleotide", id=id_rec, rettype="gb", retmode="text")
-print handle2.read()
+#print handle2.read()
 
 handle2.close()
-exit()
 
-handle3 = Entrez.efetch(db="nucleotide", id=id_rec, rettype="gb", retmode="xml")
+#fetch a record in xml format
+#the id from NCBI you want to fetch enter string of id
+handle3 = Entrez.efetch(db="nucleotide", id=id_rec, retmode="xml")
 print "handle3: " 
 print  handle3.read() 
 
-#have a problem
-#record3=  Entrez.read(handle3)
-#print len(record3)
-#print(record3[0].keys())
-#print record3[0]["GBSeq_strandedness"]
+record3=  Entrez.read(handle3)
+record3=record3[0]
+#print details about the record
+print json.dumps(record3,indent = 4)
+print len(record3)
+print(record3.keys())
+print "strandedness: " +  record3["GBSeq_strandedness"]
+print "sequence: " + record3["GBSeq_sequence"]
+print "molecule type: " + record3["GBSeq_moltype"]
 handle3.close()
-
-#here we want to search the pdb for insulin and download the file by pyPDB
-
-parser = PDBParser()
-structure = parser.get_structure('5IEI','5IEI.pdb')
-header = structure.header
-#print header.keys()
-#print "name ", header["name"]
-#print "journal ", header["journal"]
-print "compound" , header["compound"]["1"]["chain"]
-
-#wget https://www.ncbi.nlm.nih.gov/protein/P13569.3
