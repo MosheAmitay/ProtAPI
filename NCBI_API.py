@@ -71,7 +71,7 @@ dict_NCBI["definition"]=record3["GBSeq_definition"]
 dict_NCBI["accession-version"]=record3["GBSeq_accession-version"]
 dict_NCBI["topology"]=record3["GBSeq_topology"]
 dict_NCBI["length"]=record3["GBSeq_length"]
-#dict_NCBI[""]=record3["GBSeq_feature-table"] #here. need to check on another record.. ask moshe whice parameters needs. mail..
+#dict_NCBI[""]=record3["GBSeq_feature-table"] #here. need to check on another record.
 
 
 
