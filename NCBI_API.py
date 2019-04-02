@@ -3,7 +3,8 @@ from Bio.PDB.PDBParser import PDBParser
 from Bio import Entrez
 from Bio import SeqIO
 from Bio.PDB import *
-import json
+import json, os
+
 Entrez.email = "tamarsoyonov@gmail.com"
 
 #seacrh records according to inputs
@@ -19,7 +20,7 @@ print json.dumps(record,indent=4)
 #print the ids that return from the search
 print record["IdList"]
 for i in record["IdList"]:
-	print "id record: "+ i 
+        print "id record: "+ i
 
 print "Count: "+ record["Count"]
 
@@ -51,8 +52,15 @@ print "handle3: "
 
 record3=Entrez.read(handle3)
 record3=record3[0]
-print  json.dumps(record3,indent=4)
+print json.dumps(record3,indent=4)
+exit()
 
+# here
+from xml.dom import minidom
+xmldoc = minidom.parse(handle3)
+itemlist = xmldoc.getElementsByTagName('GBQualifier_name')
+print itemlist
+#
 
 #print details about the record
 print len(record3)
@@ -71,6 +79,9 @@ dict_NCBI["definition"]=record3["GBSeq_definition"]
 dict_NCBI["accession-version"]=record3["GBSeq_accession-version"]
 dict_NCBI["topology"]=record3["GBSeq_topology"]
 dict_NCBI["length"]=record3["GBSeq_length"]
+for i in record3["GBSeq_feature-table"][0]["GBFeature_quals"]:
+        key=i["GBQualifier_name"]
+        dict_NCBI[key]=i["GBQualifier_value"]
 #dict_NCBI[""]=record3["GBSeq_feature-table"] #here. need to check on another record.
 
 
@@ -84,4 +95,3 @@ handle3.close()
 
 #       handle3 = Entrez.efetch(db="nucleotide", id=entry_id, retmode="xml")
 #       print "gv"
-
