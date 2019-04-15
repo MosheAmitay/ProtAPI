@@ -6,9 +6,13 @@ import os
 import sys
 import xml.etree.ElementTree as ET
 
-GivenId=sys.argv[1]
+GivenId='P12345'  #sys.argv[1]
 
+ncbi = requests.get("https://trace.ncbi.nlm.nih.gov/Traces/sra/?run=SRR8617063&format=xml")
+sys.
+print json.dumps(ncbi.content,indent=4)
 
+exit()
 base_uni='https://www.uniprot.org/uniprot/'
 query="?query=id:"+GivenId+"&limit=1&format=xml"
 url_general =  base_uni + query
@@ -21,13 +25,16 @@ my_file.close()
 
 tree = ET.parse('Doc.xml')
 root = tree.getroot()
-#for child in root:
-#    print(child.tag, child.attrib)
+for child in root.findall('uniprot'):
+	#for c in child:
+		#for d in c:
+			#for e in d:
+    	print(e.tag, e.attrib)
 #print root.iter()
 my_list=([(elem.tag,elem.attrib) for elem in root.iter()])
 
-for i in my_list:
-	print (i)
+#for i in my_list:
+#	print (i)
 
 
 #Full_Dict={

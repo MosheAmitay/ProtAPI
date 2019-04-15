@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <uniprot xmlns="http://uniprot.org/uniprot" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://uniprot.org/uniprot http://www.uniprot.org/support/docs/uniprot.xsd">
-<entry dataset="Swiss-Prot" created="1989-10-01" modified="2019-02-13" version="120">
+<entry dataset="Swiss-Prot" created="1989-10-01" modified="2019-04-10" version="121">
 <accession>P12345</accession>
 <accession>G1SKL2</accession>
 <name>AATM_RABIT</name>
@@ -175,7 +175,7 @@
 <dbReference type="eggNOG" id="COG1448">
 <property type="taxonomic scope" value="LUCA"/>
 </dbReference>
-<dbReference type="GeneTree" id="ENSGT00390000014081"/>
+<dbReference type="GeneTree" id="ENSGT00950000183082"/>
 <dbReference type="HOGENOM" id="HOG000185898"/>
 <dbReference type="KO" id="K14455"/>
 <dbReference type="OMA" id="RDTNPKK"/>
