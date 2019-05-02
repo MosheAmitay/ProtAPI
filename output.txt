@@ -1,0 +1,2 @@
+Illumina HiSeq 2000 (Homo sapiens)
+Illumina HiSeq 2500 (Mus musculus)
