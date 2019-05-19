@@ -1,39 +1,43 @@
-'''
-YNpdb: A Python Rest_API for the RCSB Protein Data Bank. 
-Written by Yiska Neriya, 2019.
+#YNpdb: A Python Rest_API for the RCSB Protein Data Bank.
+#Written by Yiska Neriya, 2019.
 
-Bioinformatics, Jerusalem College of Technology (JCT) Tal-Campus, 2019.
-'''
+#Bioinformatics, Jerusalem College of Technology (JCT) Tal-Campus, 2019.
+
 
 import requests, xmltodict, urllib2, json
 
-        
-'''
-=================
-Function for looking up information given PDB ids and columns
-=================
-'''        
-        
+
+
+#=================
+#Function for looking up information given PDB ids and columns
+#=================
+
 def search_pdb(url_root='http://www.rcsb.org/pdb/rest/customReport.xml?'):
-'''askes for ids and columns and prints the information about them arranged 
+#askes for ids and columns and prints the information about them arranged
 
-   Parameters
-    ----------
-    url_root : string
-        The string root of the specific url for the request type
-        
-     Returns
-    -------
-    result_dict : dictionary
-        A nice and ordered dictionary of the ids and the columns
-        
-     Examples
-    --------
-    >>> kk = do_protsym_search('C9', min_rmsd=0.0, max_rmsd=1.0)
-    >>> print(kk[:5])
-    ['1KZU', '1NKZ', '2FKW', '3B8M', '3B8N']
+#    Parameter
+#    ----------
+#    url_root : string
+#    The string root of the specific url for the request type
 
-'''
+#    Prints
+#    -------
+#    result_dict : dictionary
+#    A nice and ordered dictionary of the ids and the columns
+
+#    Example
+#    --------
+#    Enter the ids that you are interested in (separated by commas): "6Q9Q"
+#    Enter the columns that you are interested in (separated by commas):
+#    choose them from this link - https://www.rcsb.org/pdb/results/reportField.do: "ligandName"
+
+#{
+#    "6Q9Q: ligandName in chain A": "1,4,7,10,13,16-HEXAOXACYCLOOCTADECANE",
+#    "6Q9Q: ligandName in chain B": "SULFATE ION",
+#    "6Q9Q: ligandName in chain C": "SULFATE ION",
+#    "6Q9Q: ligandName in chain D": "SULFATE ION"
+#}
+
 
 
         ids = input('Enter the ids that you are interested in (separated by commas): ')
@@ -66,7 +70,4 @@ def search_pdb(url_root='http://www.rcsb.org/pdb/rest/customReport.xml?'):
              except:
                result_dict['%s: %s in chain %s' %(doc["dimEntity.structureId"],columns[j],doc["dimEntity.chainId"])]=doc['dimEntity.%s' %columns[j]]
           j=j+1
-        result_dict = '\n',json.dumps(result_dict,indent=4, sort_keys=True) 
-        return result_dict
-
-
+        print '\n',json.dumps(result_dict,indent=4, sort_keys=True)
