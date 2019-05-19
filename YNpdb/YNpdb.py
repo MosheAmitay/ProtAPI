@@ -39,7 +39,6 @@ def search_pdb(url_root='http://www.rcsb.org/pdb/rest/customReport.xml?'):
 #}
 
 
-
         ids = input('Enter the ids that you are interested in (separated by commas): ')
         columns = input('Enter the columns that you are interested in (separated by commas): \n choose them from this link - https://www.rcsb.org/pdb/results/reportField.do: ')
 
@@ -54,6 +53,7 @@ def search_pdb(url_root='http://www.rcsb.org/pdb/rest/customReport.xml?'):
         ids = ids.split(",")
         columns = columns.split(",")
         result_dict = dict()
+        
         j = 0
         while j < len(columns):
           if type(doc)==list: #'doc' is a list of dictionaries
@@ -70,4 +70,5 @@ def search_pdb(url_root='http://www.rcsb.org/pdb/rest/customReport.xml?'):
              except:
                result_dict['%s: %s in chain %s' %(doc["dimEntity.structureId"],columns[j],doc["dimEntity.chainId"])]=doc['dimEntity.%s' %columns[j]]
           j=j+1
+                
         print '\n',json.dumps(result_dict,indent=4, sort_keys=True)
