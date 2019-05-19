@@ -1,4 +1,3 @@
-import os,sys
 import requests
 import pandas as pd
 from bs4 import BeautifulSoup as bs
@@ -8,19 +7,25 @@ def strip_non_ascii(string):
     stripped = (c for c in string if 0 < ord(c) < 127)
     return ''.join(stripped)
 
-fname=sys.argv[1] #you need to enter the filename of the IDs
-data = pd.read_csv(fname, sep="\n", header=None) #read the content
-data.columns = ["accession"]
-platforms=[]
-for a in data["accession"]: #for each ID
-        url = 'https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc='+a
-        source=requests.get(url).text #get the html page
-        soup=bs(source,'lxml')
-        if soup.find_all("td"):
-                for element in soup.find_all("td"):
-                        if element.string=="Title": #find the wanted line
-                                platforms.append(strip_non_ascii(element.next_sibling.next_sibling.string))
-with open('output.txt', 'w') as f:
-    for item in platforms:
-        f.write("%s\n" % item)
-print("the results are in output.txt")
+def parseGeo(accFile, field):
+    data = pd.read_csv(accFile, sep="\n", header=None) #read the content
+    data.columns = ["accession"]
+    output=open('output.txt', 'w')
+    for a in data["accession"]: #for each ID
+            url = 'https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc='+a
+            source=requests.get(url).text #get the html page
+            soup=bs(source,'lxml')
+            if soup.find_all("td"):
+                    for element in soup.find_all("td"):
+                            if element.string==field: #find the wanted line
+                                    output.write("%s\n" % strip_non_ascii(element.next_sibling.next_sibling.text))
+    output.close()
+    print("the results are in output.txt")
+def parse(db, accFile, field):
+    if db=="geo":
+      parseGeo(accFile, field)
+      
+db=raw_input("please enter the database you need:   ")
+accFile=raw_input("please enter name of a file with the accessions:   ")
+field=raw_input("please enter the field your'e interested in extracting:   ")
+parse(db, accFile, field)
