@@ -1,54 +1,12 @@
 '''
 YNpdb: A Python Rest_API for the RCSB Protein Data Bank. 
 Written by Yiska Neriya, 2019.
+
+Bioinformatics, Jerusalem College of Technology (JCT) Tal-Campus, 2019.
 '''
 
 import requests, xmltodict, urllib2, json
 
-'''
-=================
-A function that helps the function 'search_pdb()'
-=================
-'''
-
-def find_columns_and_ids(listIds, listColumns, doc):
-'''Passes on the dictionary 'doc' and puts nicely the values of it in a new dictionary 
-
-   Parameters
-    ----------
-    listIds : list of strings
-        A list of 4 character strings giving a pdb entry
-    listColumns: list of strings
-        A list of valuse that can search for in the pdb
-    doc : dictionary or list of dictionaries
-        A dictionary or a list of dictionaries (depending on what gives the function 'search_pdb()') 
-        of the record that came back from the pdb request
-        
-    Returns
-    -------
-    result_dict : dictionary
-        A nice dictionary of the ids and the columns
-    '''
-
-        result_dict = dict()
-        j = 0
-        #the loop passes on the list of columns
-        #try:if the entry of the column is 'dimStructure'- it will put the value in the result dictionry onder the parent 'dimStructure'
-        #except:if it gives an error- puts the value in the result dictionry onder the parent 'dimEntity'
-        while j < len(listColumns):
-          if type(doc)==list: #'doc' is a list
-             for d in doc: #passes on the dictionaries that are in the list "doc"
-               try:
-                   result_dict['%s: %s' %(d["dimEntity.structureId"],listColumns[j])]=d['dimStructure.%s' %listColumns[j]]
-               except:
-                      result_dict['%s: %s in chain %s' %(d["dimEntity.structureId"],listColumns[j],d["dimEntity.chainId"])]=d['dimEntity.%s' %listColumns[j]]
-          else: #'doc' is a dictionary
-             try:
-               result_dict['%s: %s' %(doc["dimEntity.structureId"],listColumns[j])]=doc['dimStructure.%s' %listColumns[j]]
-             except:
-               result_dict['%s: %s in chain %s' %(doc["dimEntity.structureId"],listColumns[j],doc["dimEntity.chainId"])]=doc['dimEntity.%s' %listColumns[j]]
-          j=j+1
-        return result_dict
         
 '''
 =================
@@ -64,11 +22,18 @@ def search_pdb(url_root='http://www.rcsb.org/pdb/rest/customReport.xml?'):
     url_root : string
         The string root of the specific url for the request type
         
-    Returns
+     Returns
     -------
-    result_dict : OrderedDict
-        An ordered dictionary object corresponding to bare xml
-    '''
+    result_dict : dictionary
+        A nice and ordered dictionary of the ids and the columns
+        
+     Examples
+    --------
+    >>> kk = do_protsym_search('C9', min_rmsd=0.0, max_rmsd=1.0)
+    >>> print(kk[:5])
+    ['1KZU', '1NKZ', '2FKW', '3B8M', '3B8N']
+
+'''
 
 
         ids = input('Enter the ids that you are interested in (separated by commas): ')
@@ -79,13 +44,29 @@ def search_pdb(url_root='http://www.rcsb.org/pdb/rest/customReport.xml?'):
 
         url_pdb = url_root + query_pdb #the final url
         d = requests.get(url_pdb) #download xml result of the url from pdb with wanted columns
-        doc = xmltodict.parse(d.content) #converts from xml to dictionary
+        doc = xmltodict.parse(d.content)
         doc = doc['dataset']['record'] #puts the beginning in the dictionary
         #print json.dumps(doc,indent=4) #prints to the screen the results in a dictionary in format json the dictionary of the output
         ids = ids.split(",")
         columns = columns.split(",")
-        dict_ = find_columns_and_ids(ids,columns,doc)
-        result_dict = '\n',json.dumps(result_dict,indent=4, sort_keys=True) #prints the results
+        result_dict = dict()
+        j = 0
+        while j < len(columns):
+          if type(doc)==list: #'doc' is a list of dictionaries
+             for d in doc:
+               #try:if the entry of the column is 'dimStructure'- it will put the value in the result dictionry onder the parent 'dimStructure'
+               try:
+                   result_dict['%s: %s' %(d["dimEntity.structureId"],columns[j])]=d['dimStructure.%s' %columns[j]]
+               #except:if it gives an error- puts the value in the result dictionry onder the parent 'dimEntity'
+               except:
+                      result_dict['%s: %s in chain %s' %(d["dimEntity.structureId"],columns[j],d["dimEntity.chainId"])]=d['dimEntity.%s' %columns[j]]
+          else: #'doc' is a dictionary
+             try:
+               result_dict['%s: %s' %(doc["dimEntity.structureId"],columns[j])]=doc['dimStructure.%s' %columns[j]]
+             except:
+               result_dict['%s: %s in chain %s' %(doc["dimEntity.structureId"],columns[j],doc["dimEntity.chainId"])]=doc['dimEntity.%s' %columns[j]]
+          j=j+1
+        result_dict = '\n',json.dumps(result_dict,indent=4, sort_keys=True) 
         return result_dict
 
 
