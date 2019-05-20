@@ -9,7 +9,7 @@ import requests, xmltodict, urllib2, json
 
 
 #=================
-#Function for looking up information given PDB ids and columns
+#Functions for looking up information given PDB ids and columns
 #=================
 
 def search_pdb(url_root='http://www.rcsb.org/pdb/rest/customReport.xml?'):
@@ -53,9 +53,9 @@ def search_pdb(url_root='http://www.rcsb.org/pdb/rest/customReport.xml?'):
         ids = ids.split(",")
         columns = columns.split(",")
         result_dict = dict()
-        
+
         j = 0
-        while j < len(columns):
+ while j < len(columns):
           if type(doc)==list: #'doc' is a list of dictionaries
              for d in doc:
                #try:if the entry of the column is 'dimStructure'- it will put the value in the result dictionry onder the parent 'dimStructure'
@@ -70,5 +70,43 @@ def search_pdb(url_root='http://www.rcsb.org/pdb/rest/customReport.xml?'):
              except:
                result_dict['%s: %s in chain %s' %(doc["dimEntity.structureId"],columns[j],doc["dimEntity.chainId"])]=doc['dimEntity.%s' %columns[j]]
           j=j+1
-                
+
         print '\n',json.dumps(result_dict,indent=4, sort_keys=True)
+
+
+
+
+def print_all(url_root='http://www.rcsb.org/pdb/rest/customReport.xml?'):
+#askes for ids and columns and prints the full records as a dictionary
+
+#    Parameter
+#    ----------
+#    url_root : string
+#    The string root of the specific url for the request type
+#    Prints
+#    -------
+#    doc : dictionary
+#    A dictionary of the full records
+
+#    Example
+#    --------
+#    Enter the ids that you are interested in (separated by commas): "5NUU"
+#    Enter the columns that you are interested in (separated by commas):
+#    choose them from this link - https://www.rcsb.org/pdb/results/reportField.do: "taxonomyId"
+
+#{
+#    "dimEntity.structureId": "5NUU",
+#    "dimEntity.chainId": "A",
+#    "dimEntity.taxonomyId": "7787"
+#}
+        ids = input('Enter the ids that you are interested in (separated by commas): ')
+        columns = input('Enter the columns that you are interested in (separated by commas): \n choose them from this link - https://www.rcsb.org/pdb/results/reportField.do: ')
+
+        #pdbids- the ids of the entry, customReportColumns-the values that you want to find, format- returnd type
+        query_pdb="pdbids=%s&customReportColumns=%s&format=xml" %(ids, columns)
+
+        url_pdb = url_root + query_pdb #the final url
+        d = requests.get(url_pdb) #download xml result of the url from pdb with wanted columns
+        doc = xmltodict.parse(d.content)
+        doc = doc['dataset']['record'] #puts the beginning in the dictionary
+        print '\n',json.dumps(doc,indent=4)
