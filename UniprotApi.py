@@ -10,7 +10,7 @@ class Uniprot:
 	entry=[]
 	accession=[]
 	def __init__(self):
-                GivenIds=raw_input("Please Enter An Accession Numbers (seperated by spaces):    ")
+                GivenIds=raw_input("Please Enter Accession Numbers (seperated by spaces):    ")
                 list =GivenIds.split()
 		base_uni='https://www.uniprot.org/uniprot/'
 		for acc in list:
