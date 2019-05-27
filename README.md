@@ -21,3 +21,18 @@ This class is made up of 8 definitions:
 8.	PrintAll: prints all the data at once for all the accession numbers given.
 
 ## How To Use
+1.	Create a youreName.py file
+2.	Include the following import:
+from UniprotApi import *
+3.	Create a variable for the UniprotApi class:
+youreName = UniprotApi()
+4.	Use the variable to call one or all of the functions mentioned in the description:
+youreName.GeneName()
+youreName.Title()
+youreName.ProteinName()
+youreName.Organism()
+youreName.ProteinSeq()
+youreName.Modified()
+youreName.Variations()
+youreName.PrintAll()
+
