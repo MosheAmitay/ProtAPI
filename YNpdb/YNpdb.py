@@ -4,7 +4,7 @@
 #Bioinformatics, Jerusalem College of Technology (JCT) Tal-Campus, 2019.
 
 
-import requests, xmltodict, urllib2, json
+import requests, xmltodict, urllib2, json, os
 
 
 
@@ -48,31 +48,36 @@ def search_pdb(url_root='http://www.rcsb.org/pdb/rest/customReport.xml?'):
         url_pdb = url_root + query_pdb #the final url
         d = requests.get(url_pdb) #download xml result of the url from pdb with wanted columns
         doc = xmltodict.parse(d.content)
-        doc = doc['dataset']['record'] #puts the beginning in the dictionary
-        #print json.dumps(doc,indent=4) #prints to the screen the results in a dictionary in format json the dictionary of the output
-        ids = ids.split(",")
-        columns = columns.split(",")
-        result_dict = dict()
+        try:
+          doc = doc['dataset']['record'] #puts the beginning in the dictionary
+          ids = ids.split(",")
+          columns = columns.split(",")
+          result_dict = dict()
 
-        j = 0
-        while j < len(columns):
-          if type(doc)==list: #'doc' is a list of dictionaries
-             for d in doc:
-               #try:if the entry of the column is 'dimStructure'- it will put the value in the result dictionry onder the parent 'dimStructure'
+          j = 0
+          while j < len(columns):
+            if type(doc)==list: #'doc' is a list of dictionaries
+               for d in doc:
+                 #try:if the entry of the column is 'dimStructure'- it will put the value in the result dictionry onder the parent 'dimStructure'
+                 try:
+                     result_dict['%s: %s' %(d["dimEntity.structureId"],columns[j])]=d['dimStructure.%s' %columns[j]]
+                 #except:if it gives an error- puts the value in the result dictionry onder the parent 'dimEntity'
+                 except:
+                        result_dict['%s: %s in chain %s' %(d["dimEntity.structureId"],columns[j],d["dimEntity.chainId"])]=d['dimEntity.%s' %columns[j]]
+            else: #'doc' is a dictionary
                try:
-                   result_dict['%s: %s' %(d["dimEntity.structureId"],columns[j])]=d['dimStructure.%s' %columns[j]]
-               #except:if it gives an error- puts the value in the result dictionry onder the parent 'dimEntity'
+                 result_dict['%s: %s' %(doc["dimEntity.structureId"],columns[j])]=doc['dimStructure.%s' %columns[j]]
                except:
-                      result_dict['%s: %s in chain %s' %(d["dimEntity.structureId"],columns[j],d["dimEntity.chainId"])]=d['dimEntity.%s' %columns[j]]
-          else: #'doc' is a dictionary
-             try:
-               result_dict['%s: %s' %(doc["dimEntity.structureId"],columns[j])]=doc['dimStructure.%s' %columns[j]]
-             except:
-               result_dict['%s: %s in chain %s' %(doc["dimEntity.structureId"],columns[j],doc["dimEntity.chainId"])]=doc['dimEntity.%s' %columns[j]]
-          j=j+1
+                 result_dict['%s: %s in chain %s' %(doc["dimEntity.structureId"],columns[j],doc["dimEntity.chainId"])]=doc['dimEntity.%s' %columns[j]]
+            j=j+1
 
-        print '\n',json.dumps(result_dict,indent=4, sort_keys=True)
-
+          output=open('output.txt', 'w') #a file for saveing the results
+          output.write("\n%s" %json.dumps(result_dict,indent=4, sort_keys=True))
+          output.close()
+          print '\n',json.dumps(result_dict,indent=4, sort_keys=True)
+          print("\n\nthe results are also saved in output.txt\n")
+        except:
+          print '\n',"There is no information abuot this column/s"
 
 
 
@@ -83,6 +88,7 @@ def print_all(url_root='http://www.rcsb.org/pdb/rest/customReport.xml?'):
 #    ----------
 #    url_root : string
 #    The string root of the specific url for the request type
+
 #    Prints
 #    -------
 #    doc : dictionary
@@ -108,5 +114,14 @@ def print_all(url_root='http://www.rcsb.org/pdb/rest/customReport.xml?'):
         url_pdb = url_root + query_pdb #the final url
         d = requests.get(url_pdb) #download xml result of the url from pdb with wanted columns
         doc = xmltodict.parse(d.content)
-        doc = doc['dataset']['record'] #puts the beginning in the dictionary
-        print '\n',json.dumps(doc,indent=4)
+
+        try:
+          doc = doc['dataset']['record'] #puts the beginning in the dictionary
+          output=open('output.txt', 'w') #a file for saveing the results
+          output.write("\n%s" %json.dumps(doc,indent=4))
+          output.close()
+          print '\n',json.dumps(doc,indent=4)
+          print("\n\nthe results are also saved in output.txt\n")
+        except:
+          print '\n',"There is no information abuot this column/s"
+
