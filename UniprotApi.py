@@ -1,9 +1,7 @@
 import requests
 import xmltodict
-import urllib2
 import json
-import os
-import sys
+
 __metaclass__=type
 
 class Uniprot:
