@@ -7,10 +7,5 @@ YNpdb includs two functions:
 2. print_all()- askes for pdb ids and columns(records) of interest 
                 and prints the full records as a dictionary.
 ## Install
-For using my library you must install the libraries:
-requests
-xmltodict
-urllib2
-json
-os
+For using my library you must install the libraries: requests, xmltodict, urllib2, json, os
 
