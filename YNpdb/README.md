@@ -1,5 +1,6 @@
 # YNpdb
 A Python Rest_API for the RCSB Protein Data Bank
+
 YNpdb includs two functions:
 1. search_pdb()- askes for pdb ids and columns(records) of interest 
                  and prints the information about them arranged.
