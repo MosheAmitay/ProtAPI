@@ -39,8 +39,8 @@ def search_pdb(url_root='http://www.rcsb.org/pdb/rest/customReport.xml?'):
 #}
 
 
-        ids = input('Enter the ids that you are interested in (separated by commas): ')
-        columns = input('Enter the columns that you are interested in (separated by commas): \n choose them from this link - https://www.rcsb.org/pdb/results/reportField.do: ')
+        ids = raw_input('Enter the ids that you are interested in (separated by commas): ')
+        columns = raw_input('Enter the columns that you are interested in (separated by commas): \n choose them from this link - https://www.rcsb.org/pdb/results/reportField.do: ')
 
         #pdbids- the ids of the entry, customReportColumns-the values that you want to find, format- returnd type
         query_pdb="pdbids=%s&customReportColumns=%s&format=xml" %(ids, columns)
@@ -105,8 +105,8 @@ def print_all(url_root='http://www.rcsb.org/pdb/rest/customReport.xml?'):
 #    "dimEntity.chainId": "A",
 #    "dimEntity.taxonomyId": "7787"
 #}
-        ids = input('Enter the ids that you are interested in (separated by commas): ')
-        columns = input('Enter the columns that you are interested in (separated by commas): \n choose them from this link - https://www.rcsb.org/pdb/results/reportField.do: ')
+        ids = raw_input('Enter the ids that you are interested in (separated by commas): ')
+        columns = raw_input('Enter the columns that you are interested in (separated by commas): \n choose them from this link - https://www.rcsb.org/pdb/results/reportField.do: ')
 
         #pdbids- the ids of the entry, customReportColumns-the values that you want to find, format- returnd type
         query_pdb="pdbids=%s&customReportColumns=%s&format=xml" %(ids, columns)
