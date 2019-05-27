@@ -8,5 +8,5 @@ YNpdb includs two functions:
                 and prints the full records as a dictionary.
 ## Install
 For using my library you must install the libraries:
-requests, xmltodict, urllib2, json
+requests, xmltodict, urllib2, json, os
 
