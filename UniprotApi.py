@@ -10,7 +10,7 @@ class Uniprot:
 	entry=[]
 	accession=[]
 	def __init__(self):
-                GivenIds=raw_input("Please Enter Accession Numbers (seperated by spaces):    ")
+                GivenIds=raw_input("Please Enter An Accession Numbers (seperated by spaces):    ")
                 list =GivenIds.split()
 		base_uni='https://www.uniprot.org/uniprot/'
 		for acc in list:
@@ -60,7 +60,10 @@ class Uniprot:
                                 	Mod_Dict['Modification number '+str(i)]='Description= '+x['@description']
 			print "\nModified Genes Of " +self.accession[j] + ":\n"
 			j=j+1
-                	print(json.dumps(Mod_Dict, indent=4, sort_keys=True))
+			if len(Mod_Dict)==0:
+				print "There are no modified genes"
+			else:
+                		print(json.dumps(Mod_Dict, indent=4, sort_keys=True))
 
         def Variations(self):
 		i=0
@@ -74,12 +77,50 @@ class Uniprot:
 			print "\nVariations Of " +self.accession[i] + ":\n"
 			i=i+1
                 	print(json.dumps(Seq_Var_Dict, indent=4, sort_keys=True))
-	def PrintAll(self):		
-           		self.GeneName()
-               		self.Title()
-                	self.ProteinName()
-                	self.Organism()
-                	self.ProteinSeq()
-                #	self.Modified()
-                #	self.Variations()
+	def PrintAll(self):	
+		
+		for i in range(len(self.entry)):
+			print "\nInformation for accession number: "+ self.accession[i]
+			
+			#gene name
+			if isinstance(self.entry[i]['uniprot']['entry']['gene']['name'],list):
+                               	print "\nGene Name: "  + self.entry[i]['uniprot']['entry']['gene']['name'][0]['#text']
+                        else:
+                                print "\nGene Name of "+ self.entry[i]['uniprot']['entry']['gene']['name']['#text']
+			#title
+			print "\nTitle Of " + ": " + self.entry[i]['uniprot']['entry']['reference'][0]['citation']['title']
 
+			#protein
+                        print "\nProtein Name Of " + ": " + self.entry[i]['uniprot']['entry']['protein']['recommendedName']['fullName']
+
+			#organism
+		        print "\nOrganism Of " + ": " + self.entry[i]['uniprot']['entry']['organism']['name'][0]['#text']
+
+			#protein sequence
+			print "\nProtein Sequence Of " +":\n\n" + self.entry[i]['uniprot']['entry']['sequence']['#text']
+
+	
+			a=0
+			
+			Mod_Dict={}
+
+
+			for x in self.entry[i]['uniprot']['entry']['feature']:
+                                if x['@type']=='modified residue':
+                                        a=a+1
+                                        Mod_Dict['Modification number '+str(a)]='Description= '+x['@description']
+                        print "\nModified Genes Of " +self.accession[i] + ":\n"
+          
+			if len(Mod_Dict)==0:
+                                print "There are no modified genes"
+                        else:
+                                print(json.dumps(Mod_Dict, indent=4, sort_keys=True))
+			b=0
+			Seq_Var_Dict={}
+                        for x in self.entry[i]['uniprot']['entry']['feature']:
+                                if x['@type']=='sequence variant':
+                                        b=b+1
+                                        Seq_Var_Dict['Sequence Varient '+str(b)]=x['original']+' Turns to '+x['variation']+'at position: '+ x['location']['position']['@position']
+                        print "\nVariations Of " +self.accession[i] + ":\n"
+                        
+                        print(json.dumps(Seq_Var_Dict, indent=4, sort_keys=True))
