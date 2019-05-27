@@ -4,6 +4,7 @@
 
 UniProt is a freely accessible database of protein sequence and functional information, many entries being derived from genome sequencing projects. It contains a large amount of information about the biological function of proteins derived from the research literature.  
 https://en.wikipedia.org/wiki/UniProt.
+
 Since this is a very large data base, access of information can be a burden especially when information of more than one accession number is wanted.
 
 ## Description
@@ -19,3 +20,4 @@ This class is made up of 8 definitions:
 7.	Variations: finds variations for given accession number/s.
 8.	PrintAll: prints all the data at once for all the accession numbers given.
 
+## How To Use
