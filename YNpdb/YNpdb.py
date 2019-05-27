@@ -55,7 +55,7 @@ def search_pdb(url_root='http://www.rcsb.org/pdb/rest/customReport.xml?'):
         result_dict = dict()
 
         j = 0
- while j < len(columns):
+        while j < len(columns):
           if type(doc)==list: #'doc' is a list of dictionaries
              for d in doc:
                #try:if the entry of the column is 'dimStructure'- it will put the value in the result dictionry onder the parent 'dimStructure'
