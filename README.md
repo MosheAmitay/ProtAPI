@@ -52,7 +52,9 @@ For using my library you must install the libraries: requests, xmltodict, urllib
 
 -----------------------------
 {
+
     Enter the ids that you are interested in (separated by commas): 6EGC
+    
     Enter the columns that you are interested in (separated by commas):
      choose them from this link - https://www.rcsb.org/pdb/results/reportField.do: sequence
 
@@ -68,6 +70,7 @@ For using my library you must install the libraries: requests, xmltodict, urllib
 
 ------------------------------
 {
+
     Enter the ids that you are interested in (separated by commas): 6QN9
 
     Enter the columns that you are interested in (separated by commas):
@@ -88,11 +91,13 @@ For using my library you must install the libraries: requests, xmltodict, urllib
     the results are also saved in output.txt
 
 }
+
 ---------------------------------------
 
 ### print_all()
 ---------------------------
 {
+
     Enter the ids that you are interested in (separated by commas): 6EGC
 
     Enter the columns that you are interested in (separated by commas):
@@ -109,8 +114,10 @@ For using my library you must install the libraries: requests, xmltodict, urllib
     the results are also saved in output.txt
 
 }
+
 -----------------------------------
 {
+
     Enter the ids that you are interested in (separated by commas): 6QN9,6DJH
 
     Enter the columns that you are interested in (separated by commas):
@@ -192,5 +199,3 @@ For using my library you must install the libraries: requests, xmltodict, urllib
     the results are also saved in output.txt
 
 }
-
-
