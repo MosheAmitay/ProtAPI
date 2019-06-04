@@ -36,3 +36,67 @@ youreName.Modified()
 youreName.Variations()
 youreName.PrintAll()
 
+## Code Examples:
+Once you have a youreName.py file created (mentioned in the 'how to use section')
+
+1. To extract gene names:
+
+youreName.py file will include:
+
+from UniprotApi import *
+VarName = UniprotApi()
+VarName.GeneName()
+
+you will run youreName.py in the linux window:
+
+python youreName.py
+
+Please Enter Accession Numbers (seperated by spaces): Q14533 Q3TTY5 P08069 Q60751 P69892
+
+(the results you will get:)
+
+Gene Name Of Q14533: KRT81
+
+Gene Name Of Q3TTY5: Krt2
+
+Gene Name of P08069: IGF1R
+
+Gene Name of Q60751: Igf1r
+
+Gene Name of P69892: HBG2
+
+2. To extract protein names for all the accession numbers:
+
+youreName.py will include:
+
+from UniprotApi import *
+VarName = UniprotApi()
+VarName.ProteinName()
+
+you will run youreName.py in the linux window:
+
+python youreName.py
+
+Please Enter Accession Numbers (seperated by spaces): Q14533 Q3TTY5 P08069 Q60751 P69892
+
+(the results you will get:)
+
+Protein Name Of Q14533: Keratin, type II cuticular Hb1
+
+Protein Name Of Q3TTY5: Keratin, type II cytoskeletal 2 epidermal
+
+Protein Name Of P08069: Insulin-like growth factor 1 receptor
+
+Protein Name Of Q60751: Insulin-like growth factor 1 receptor
+
+Protein Name Of P69892: Hemoglobin subunit gamma-2
+
+
+
+
+
+
+
+
+
+
