@@ -13,6 +13,8 @@ For using my library you must install the libraries: requests, xmltodict, urllib
 ## Examples
 ### search_pdb()
 
+The code for this function:
+
 search = YNpdb.search_pdb()
 
 ---------------------------
@@ -98,6 +100,8 @@ search = YNpdb.search_pdb()
 ---------------------------------------
 
 ### print_all()
+
+The code for this function:
 
 all = YNpdb.print_all()
 
