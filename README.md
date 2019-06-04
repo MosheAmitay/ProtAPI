@@ -15,18 +15,18 @@ For using my library you must install the libraries: requests, xmltodict, urllib
 ---------------------------
 {
 
-Enter the ids that you are interested in (separated by commas): 5NUU
+  Enter the ids that you are interested in (separated by commas): 5NUU
 
-Enter the columns that you are interested in (separated by commas):
- choose them from this link - https://www.rcsb.org/pdb/results/reportField.do: taxonomyId
+  Enter the columns that you are interested in (separated by commas):
+  choose them from this link - https://www.rcsb.org/pdb/results/reportField.do: taxonomyId
 
-{
+  {
 
-    "5NUU: taxonomyId in chain A": "7787"
+   "5NUU: taxonomyId in chain A": "7787"
     
-}
+  }
 
-the results are also saved in output.txt
+  the results are also saved in output.txt
 
 }
 -----------------------------
