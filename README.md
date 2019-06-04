@@ -44,6 +44,18 @@ Enter the columns that you are interested in (separated by commas):
 the results are also saved in output.txt
 
 -----------------------------
+
+Enter the ids that you are interested in (separated by commas): 6EGC
+Enter the columns that you are interested in (separated by commas):
+ choose them from this link - https://www.rcsb.org/pdb/results/reportField.do: sequence
+
+{
+    "6EGC: sequence in chain A": "GSHMTRTEIIRELERSLREQEELAKRLKELLRELERLQREGSSDEDVRELLREIKELVEEIEKLAREQKYLVEELKRQQGPPGNEIIRELERSLREQEELAKRLKELLRELERLQREGSSDEDVRELLREIKELVEEIEKLAREQKYLVEELKRQD"
+}
+
+the results are also saved in output.txt
+------------------------------
+
 ### print_all()
 ---------------------------
 
