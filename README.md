@@ -6,7 +6,7 @@ The API parses the xml based data with Biopython for nucleotide, manually for PD
 ## usage
 ### geo
 the geoParse.py file needs a database name, a file of accessions and a term to search for- wich is one of the sub titles of the GPL accession page. For example, if I want the "Technology type" I will enter the string exactly like it is written in the web-page.
-#### code example:
+#### code examples:
 --------------------------------
 
 python geoParse.py
@@ -42,8 +42,6 @@ spotted oligonucleotide
 spotted oligonucleotide
 
 spotted oligonucleotide
-#### --------------------------------
-
 #### --------------------------------
 
 python geoParse.py
