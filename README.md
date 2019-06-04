@@ -4,7 +4,7 @@ include:
 searching records and information about them
 fetch a record in text format and xml format, and get details about the records- by get function or dictionary.
 
-##Install
+## Install
 For using my class you must install: 
 from Bio.PDB.PDBParser import PDBParser
 from Bio import Entrez
