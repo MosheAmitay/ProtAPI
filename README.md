@@ -17,6 +17,7 @@ The code for this function:
 
 search = YNpdb.search_pdb()
 
+outputs
 ---------------------------
 {
 
@@ -105,6 +106,7 @@ The code for this function:
 
 all = YNpdb.print_all()
 
+outputs
 ---------------------------
 {
 
