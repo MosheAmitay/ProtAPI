@@ -1,4 +1,4 @@
-#YNpdb: A Python Rest_API for the RCSB Protein Data Bank.
+#YNpdb: A Python Rest API for the RCSB Protein Data Bank.
 #Written by Yiska Neriya, 2019.
 
 #Bioinformatics, Jerusalem College of Technology (JCT) Tal-Campus, 2019.
@@ -20,8 +20,8 @@ def search_pdb(url_root='http://www.rcsb.org/pdb/rest/customReport.xml?'):
 #    url_root : string
 #    The string root of the specific url for the request type
 
-#    Prints
-#    -------
+#    Returns & Prints
+#    -----------------
 #    result_dict : dictionary
 #    A nice and ordered dictionary of the ids and the columns
 
@@ -41,13 +41,14 @@ def search_pdb(url_root='http://www.rcsb.org/pdb/rest/customReport.xml?'):
 
         ids = raw_input('Enter the ids that you are interested in (separated by commas): ')
         columns = raw_input('Enter the columns that you are interested in (separated by commas): \n choose them from this link - https://www.rcsb.org/pdb/results/reportField.do: ')
-
+        
         #pdbids- the ids of the entry, customReportColumns-the values that you want to find, format- returnd type
         query_pdb="pdbids=%s&customReportColumns=%s&format=xml" %(ids, columns)
 
         url_pdb = url_root + query_pdb #the final url
         d = requests.get(url_pdb) #download xml result of the url from pdb with wanted columns
         doc = xmltodict.parse(d.content)
+        print '\n',json.dumps(doc,indent=4)
         try:
           doc = doc['dataset']['record'] #puts the beginning in the dictionary
           ids = ids.split(",")
@@ -61,27 +62,28 @@ def search_pdb(url_root='http://www.rcsb.org/pdb/rest/customReport.xml?'):
                  #try:if the entry of the column is 'dimStructure'- it will put the value in the result dictionry onder the parent 'dimStructure'
                  try:
                      result_dict['%s: %s' %(d["dimEntity.structureId"],columns[j])]=d['dimStructure.%s' %columns[j]]
-#                    output.write("%s\n" %d["dimEntity.structureId"]+" "+columns[j]+": "+d['dimStructure.%s' %columns[j]])
+                     output.write("%s\n" %(d["dimEntity.structureId"]+": "+columns[j]+": "+d['dimStructure.%s' %columns[j]]))
                  #except:if it gives an error- puts the value in the result dictionry onder the parent 'dimEntity'
                  except:
                         result_dict['%s: %s in chain %s' %(d["dimEntity.structureId"],columns[j],d["dimEntity.chainId"])]=d['dimEntity.%s' %columns[j]]
-#                       output.write("%s\n" %d["dimEntity.structureId"]+" "+columns[j]+" "+d["dimEntity.chainId"]+": "+d['dimEntity.%s' %columns[j]])
+                        output.write("%s\n" %(d["dimEntity.structureId"]+": "+columns[j]+" in chain "+d["dimEntity.chainId"]+": "+d['dimEntity.%s' %columns[j]]))
+
             else: #'doc' is a dictionary
                try:
                  result_dict['%s: %s' %(doc["dimStructure.structureId"],columns[j])]=doc['dimStructure.%s' %columns[j]]
-#                output.write("%s\n" %doc["dimStructure.structureId"]+" "+columns[j]+": "+doc['dimStructure.%s' %columns[j]])
+                 output.write("%s\n" %(doc["dimStructure.structureId"]+": "+columns[j]+": "+doc['dimStructure.%s' %columns[j]]))
                except:
                  result_dict['%s: %s in chain %s' %(doc["dimEntity.structureId"],columns[j],doc["dimEntity.chainId"])]=doc['dimEntity.%s' %columns[j]]
-#                output.write("%s\n" %doc["dimStructure.structureId"]+" "+columns[j]+": "+doc['dimStructure.%s' %columns[j]])
+                 output.write("%s\n" %(doc["dimEntity.structureId"]+": "+columns[j]+" in chain "+doc["dimEntity.chainId"]+": "+doc['dimEntity.%s' %column$
             j=j+1
-
-          output.write("%s\n" %json.dumps(result_dict,indent=4, sort_keys=True))
+ 
+          #output.write("%s\n" %json.dumps(result_dict,indent=4, sort_keys=True))
           output.close()
           print '\n',json.dumps(result_dict,indent=4, sort_keys=True)
-          print("\n\nthe results are also saved in output.txt\n")
+          print("\nthe results are also saved in output.txt\n")
         except:
           print '\n',"There is no information abuot this column/s"
-
+        return result_dict
 
 
 def print_all(url_root='http://www.rcsb.org/pdb/rest/customReport.xml?'):
@@ -92,8 +94,8 @@ def print_all(url_root='http://www.rcsb.org/pdb/rest/customReport.xml?'):
 #    url_root : string
 #    The string root of the specific url for the request type
 
-#    Prints
-#    -------
+#    Returns & Prints
+#    -----------------
 #    doc : dictionary
 #    A dictionary of the full records
 
@@ -109,11 +111,11 @@ def print_all(url_root='http://www.rcsb.org/pdb/rest/customReport.xml?'):
 #    "dimEntity.taxonomyId": "7787"
 #}
         ids = raw_input('Enter the ids that you are interested in (separated by commas): ')
-        columns = raw_input('Enter the columns that you are interested in (separated by commas): \n choose them from this link - https://www.rcsb.org/pdb/results/reportField.do: ')
+        columns = raw_input('Enter the columns that you are interested in (separated by commas): \n choose them from this link - https://www.rcsb.org/pdb$
 
         #pdbids- the ids of the entry, customReportColumns-the values that you want to find, format- returnd type
         query_pdb="pdbids=%s&customReportColumns=%s&format=xml" %(ids, columns)
-        
+
         url_pdb = url_root + query_pdb #the final url
         d = requests.get(url_pdb) #download xml result of the url from pdb with wanted columns
         doc = xmltodict.parse(d.content)
@@ -126,3 +128,4 @@ def print_all(url_root='http://www.rcsb.org/pdb/rest/customReport.xml?'):
           print("\n\nthe results are also saved in output.txt\n")
         except:
           print '\n',"There is no information abuot this column/s"
+        return doc
