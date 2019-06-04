@@ -24,27 +24,30 @@ For using my library you must install the libraries: requests, xmltodict, urllib
 
      "5NUU: taxonomyId in chain A": "7787"
     
-   }
+    }
 
    the results are also saved in output.txt
 
 }
+
 -----------------------------
-
-Enter the ids that you are interested in (separated by commas): 6GUS
-
-Enter the columns that you are interested in (separated by commas):
- choose them from this link - https://www.rcsb.org/pdb/results/reportField.do: chainLength,ligandId
-
 {
+    Enter the ids that you are interested in (separated by commas): 6GUS
+
+    Enter the columns that you are interested in (separated by commas):
+     choose them from this link - https://www.rcsb.org/pdb/results/reportField.do: chainLength,ligandId
+
+    {
 
     "6GUS: chainLength in chain A": "155",
     
     "6GUS: ligandId in chain A": "SO4"
     
-}
+    }
 
-the results are also saved in output.txt
+    the results are also saved in output.txt
+    
+}
 
 -----------------------------
 
