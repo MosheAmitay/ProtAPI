@@ -18,6 +18,7 @@ The code for this function:
 search = YNpdb.search_pdb()
 
 ##### outputs
+-------------------------------
 {
 
     Enter the ids that you are interested in (separated by commas): 5NUU
@@ -106,6 +107,7 @@ The code for this function:
 all = YNpdb.print_all()
 
 ##### outputs
+---------------------------------------
 {
 
     Enter the ids that you are interested in (separated by commas): 6EGC
