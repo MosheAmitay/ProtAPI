@@ -1,7 +1,7 @@
 #this code fetches information from several databases by beautifulSoup
-import requests
-import pandas as pd
-from bs4 import BeautifulSoup as bs
+import requests #for communicating with web
+import pandas as pd #for managing data
+from bs4 import BeautifulSoup as bs #for scraping the web-pages
 
 #the function recieves a string and returns only ascii coded characters
 def strip_non_ascii(string):
@@ -28,11 +28,24 @@ def parseGeo(accFile, field):
     output.close()
     print("the results are in output.txt")
 
+def parseSRA(accFile, field):
+    data = pd.read_csv(accFile, sep="\n", header=None) #read the content with pandas
+    data.columns = ["accession"]
+    output=open('output.txt', 'w') #open a file for output
+    for a in data["accession"]: #for each ID
+	    if "SRX" in a: parseSRX(a)
+            
+def parseSRX(acc):
+	url = 'https://www.ncbi.nlm.nih.gov/sra/'+acc+'[accn]'
+        source=requests.get(url).text #get the html page
+        soup=bs(source,'lxml') #create beautiful soup object
+
 #this is a redirection function for future expansions
 def parse(db, accFile, field):
     if db=="geo":
       parseGeo(accFile, field)
-      
+    if db=="sra":
+	print(db)
 
 #here you get the information for the functions
 db=raw_input("please enter the database you need:   ")
