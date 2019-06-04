@@ -4,6 +4,20 @@ include:
 searching records and information about them
 fetch a record in text format and xml format, and get details about the records- by get function or dictionary.
 
+## all function:
+
+__init__ 
+
+Initializing an object- its record (by fetching, and if the user want he can do searching before).
+
+search
+
+searching record from query. choose the first id from the list and return it.
+
+
+
+***
+
 ## Install
 For using my class you must install: 
 
@@ -51,3 +65,6 @@ Write your term:    cftr
 
 mRNA
 
+--------------------------------
+
+continue with more examples.
