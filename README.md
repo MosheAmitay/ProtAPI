@@ -13,6 +13,8 @@ For using my library you must install the libraries: requests, xmltodict, urllib
 ## Examples
 ### search_pdb()
 ---------------------------
+{
+
 Enter the ids that you are interested in (separated by commas): 5NUU
 
 Enter the columns that you are interested in (separated by commas):
@@ -26,6 +28,7 @@ Enter the columns that you are interested in (separated by commas):
 
 the results are also saved in output.txt
 
+}
 -----------------------------
 
 Enter the ids that you are interested in (separated by commas): 6GUS
