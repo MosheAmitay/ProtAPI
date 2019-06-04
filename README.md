@@ -14,5 +14,4 @@ from Bio import Entrez
 from Bio import SeqIO
 
 from Bio.PDB import *
-
 import json, os
