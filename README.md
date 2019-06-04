@@ -18,7 +18,7 @@ The code for this function:
 search = YNpdb.search_pdb()
 
 #### outputs
--------------------------------
+
 1.
 {
 
@@ -111,7 +111,7 @@ The code for this function:
 all = YNpdb.print_all()
 
 #### outputs
----------------------------------------
+
 1.
 {
 
