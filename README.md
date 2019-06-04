@@ -6,8 +6,8 @@ The API parses the xml based data with Biopython for nucleotide, manually for PD
 ## usage
 ### geo
 the geoParse.py file needs a database name, a file of accessions and a term to search for- wich is one of the sub titles of the GPL accession page. For example, if I want the "Technology type" I will enter the string exactly like it is written in the web-page.
-#### --------------------------------
-code example:
+#### --------------------------------code example:
+
 
 python geoParse.py
 
@@ -18,6 +18,7 @@ please enter name of a file with the accessions:   ids5.txt
 please enter the field your'e interested in extracting:   Technology type
 
 the results are in output.txt
+
 
 The accession file is:
 
@@ -30,6 +31,7 @@ GPL10014
 GPL10040
 
 GPL10072
+
 
 The output will be given in the file output.txt in the order of the accessions accepted in the accessions file:
 
@@ -55,6 +57,7 @@ please enter the field your'e interested in extracting:   Title
 
 the results are in output.txt
 
+
 The accession file is:
 
 GPL10012
@@ -66,6 +69,7 @@ GPL10014
 GPL10040
 
 GPL10072
+
 
 The output will be given in the file output.txt in the order of the accessions accepted in the accessions file:
 
