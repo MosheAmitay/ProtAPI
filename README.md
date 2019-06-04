@@ -6,8 +6,13 @@ fetch a record in text format and xml format, and get details about the records-
 
 ## Install
 For using my class you must install: 
+
 from Bio.PDB.PDBParser import PDBParser
+
 from Bio import Entrez
+
 from Bio import SeqIO
+
 from Bio.PDB import *
+
 import json, os
