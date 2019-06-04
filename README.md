@@ -44,7 +44,9 @@ Once you have youreName.py file created (mentioned in the 'how to use section')
 youreName.py file will include:
 
 from UniprotApi import *
+
 VarName = UniprotApi()
+
 VarName.GeneName()
 
 you will run youreName.py in the linux window:
@@ -70,7 +72,9 @@ Gene Name of P69892: HBG2
 youreName.py will include:
 
 from UniprotApi import *
+
 VarName = UniprotApi()
+
 VarName.ProteinName()
 
 you will run youreName.py in the linux window:
