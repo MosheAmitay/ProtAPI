@@ -39,13 +39,18 @@ def parseSRX(acc):
 	url = 'https://www.ncbi.nlm.nih.gov/sra/'+acc+'[accn]'
         source=requests.get(url).text #get the html page
         soup=bs(source,'lxml') #create beautiful soup object
+        if soup.find_all("div"):
+                for element in soup.find_all("div"):
+                        if field in element.text:
+                                print element.text
+
 
 #this is a redirection function for future expansions
 def parse(db, accFile, field):
     if db=="geo":
-      parseGeo(accFile, field)
+        parseGeo(accFile, field)
     if db=="sra":
-	print(db)
+	parseSRA(accFile, field)
 
 #here you get the information for the functions
 db=raw_input("please enter the database you need:   ")
