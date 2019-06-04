@@ -6,6 +6,8 @@ YNpdb includs two functions:
                  and prints the information about them arranged.
 2. print_all()- askes for pdb ids and columns(records) of interest 
                 and prints the full records as a dictionary.
+                
+
 ## Install
 For using my library you must install the libraries: requests, xmltodict, urllib2, json, os
 ## Examples
@@ -22,8 +24,25 @@ Enter the columns that you are interested in (separated by commas):
     
 }
 
+the results are also saved in output.txt
+
+-----------------------------
+
+Enter the ids that you are interested in (separated by commas): 6GUS
+
+Enter the columns that you are interested in (separated by commas):
+ choose them from this link - https://www.rcsb.org/pdb/results/reportField.do: chainLength,ligandId
+
+{
+
+    "6GUS: chainLength in chain A": "155",
+    
+    "6GUS: ligandId in chain A": "SO4"
+    
+}
 
 the results are also saved in output.txt
+
 
 ### print_all()
 ---------------------------
