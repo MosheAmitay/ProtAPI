@@ -43,7 +43,7 @@ Enter the columns that you are interested in (separated by commas):
 
 the results are also saved in output.txt
 
-
+-----------------------------
 ### print_all()
 ---------------------------
 
