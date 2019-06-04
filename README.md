@@ -26,16 +26,17 @@ For using my library you must install the libraries: requests, xmltodict, urllib
     
     }
 
-   the results are also saved in output.txt
+    the results are also saved in output.txt
 
 }
 
 -----------------------------
 {
-    Enter the ids that you are interested in (separated by commas): 6GUS
 
-    Enter the columns that you are interested in (separated by commas):
-     choose them from this link - https://www.rcsb.org/pdb/results/reportField.do: chainLength,ligandId
+      Enter the ids that you are interested in (separated by commas): 6GUS
+
+      Enter the columns that you are interested in (separated by commas):
+       choose them from this link - https://www.rcsb.org/pdb/results/reportField.do: chainLength,ligandId
 
     {
 
@@ -50,27 +51,29 @@ For using my library you must install the libraries: requests, xmltodict, urllib
 }
 
 -----------------------------
-
-Enter the ids that you are interested in (separated by commas): 6EGC
-Enter the columns that you are interested in (separated by commas):
- choose them from this link - https://www.rcsb.org/pdb/results/reportField.do: sequence
-
 {
+    Enter the ids that you are interested in (separated by commas): 6EGC
+    Enter the columns that you are interested in (separated by commas):
+     choose them from this link - https://www.rcsb.org/pdb/results/reportField.do: sequence
 
-    "6EGC: sequence in chain A": "GSHMTRTEIIRELERSLREQEELAKRLKELLRELERLQREGSSDEDVRELLREIKELVEEIEKLAREQKYLVEELKRQQGPPGNEIIRELERSLREQEELAKRLKELLRELERLQREGSSDEDVRELLREIKELVEEIEKLAREQKYLVEELKRQD"
+    {
+
+    "6EGC: sequence in chain A":         "GSHMTRTEIIRELERSLREQEELAKRLKELLRELERLQREGSSDEDVRELLREIKELVEEIEKLAREQKYLVEELKRQQGPPGNEIIRELERSLREQEELAKRLKELLRELERLQREGSSDEDVRELLREIKELVEEIEKLAREQKYLVEELKRQD"
+
+    }
+
+    the results are also saved in output.txt
 
 }
 
-the results are also saved in output.txt
-
 ------------------------------
-
-Enter the ids that you are interested in (separated by commas): 6QN9
-
-Enter the columns that you are interested in (separated by commas):
- choose them from this link - https://www.rcsb.org/pdb/results/reportField.do: plasmid,doi
-
 {
+    Enter the ids that you are interested in (separated by commas): 6QN9
+
+    Enter the columns that you are interested in (separated by commas):
+     choose them from this link - https://www.rcsb.org/pdb/results/reportField.do: plasmid,doi
+
+    {
 
     "6DJH: compound in chain A": "Tyrosyl-DNA phosphodiesterase 1",
     
@@ -80,40 +83,42 @@ Enter the columns that you are interested in (separated by commas):
     
     "6QN9: compound in chain L": "light chain"
     
+    }
+
+    the results are also saved in output.txt
+
 }
-
-the results are also saved in output.txt
-
 ---------------------------------------
 
 ### print_all()
 ---------------------------
-
-Enter the ids that you are interested in (separated by commas): 6EGC
-
-Enter the columns that you are interested in (separated by commas):
- choose them from this link - https://www.rcsb.org/pdb/results/reportField.do: atomSiteCount
-
 {
+    Enter the ids that you are interested in (separated by commas): 6EGC
+
+    Enter the columns that you are interested in (separated by commas):
+    choose them from this link - https://www.rcsb.org/pdb/results/reportField.do: atomSiteCount
+
+    {
 
     "dimStructure.structureId": "6EGC",
     
     "dimStructure.atomSiteCount": "1134"
 
+    }
+
+    the results are also saved in output.txt
+
 }
-
-the results are also saved in output.txt
-
 -----------------------------------
+{
+    Enter the ids that you are interested in (separated by commas): 6QN9,6DJH
 
-Enter the ids that you are interested in (separated by commas): 6QN9,6DJH
+    Enter the columns that you are interested in (separated by commas):
+    choose them from this link - https://www.rcsb.org/pdb/results/reportField.do: ligandName
 
-Enter the columns that you are interested in (separated by commas):
- choose them from this link - https://www.rcsb.org/pdb/results/reportField.do: ligandName
+    [
 
-[
-
-    {
+        {
     
         "dimEntity.structureId": "6QN9",
         
@@ -121,9 +126,9 @@ Enter the columns that you are interested in (separated by commas):
         
         "dimEntity.ligandName": "GLYCEROL",
         
-    },
+        },
     
-    {
+        {
     
         "dimEntity.structureId": "6QN9",
         
@@ -131,9 +136,9 @@ Enter the columns that you are interested in (separated by commas):
         
         "dimEntity.ligandName": "null",
 
-    },
+        },
     
-    {
+        {
     
         "dimEntity.structureId": "6QN9",
         
@@ -141,9 +146,9 @@ Enter the columns that you are interested in (separated by commas):
         
         "dimEntity.ligandName": "SULFATE ION",
         
-    },
+        },
     
-    {
+        {
     
         "dimEntity.structureId": "6DJH",
         
@@ -151,9 +156,9 @@ Enter the columns that you are interested in (separated by commas):
         
         "dimEntity.ligandName": "8-bromo-4-oxo-1,4-dihydroquinoline-3-carboxylic acid",
 
-    },
+        },
     
-    {
+        {
     
         "dimEntity.structureId": "6DJH",
         
@@ -161,9 +166,9 @@ Enter the columns that you are interested in (separated by commas):
         
         "dimEntity.ligandName": "1,2-ETHANEDIOL",
         
-    },
+        },
     
-    {
+        {
     
         "dimEntity.structureId": "6DJH",
         
@@ -171,21 +176,21 @@ Enter the columns that you are interested in (separated by commas):
         
         "dimEntity.ligandName": "1,2-ETHANEDIOL",
 
-    },
+        },
     
-    {
+        {
         "dimEntity.structureId": "6DJH",
         
         "dimEntity.chainId": "A",
         
         "dimEntity.ligandName": "8-bromo-4-oxo-1,4-dihydroquinoline-3-carboxylic acid",
 
-    }
+        }
     
-]
+    ]
 
-the results are also saved in output.txt
+    the results are also saved in output.txt
 
-
+}
 
 
