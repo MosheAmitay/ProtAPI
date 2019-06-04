@@ -42,7 +42,8 @@ spotted oligonucleotide
 spotted oligonucleotide
 
 spotted oligonucleotide
-#### --------------------------------
+
+--------------------------------
 
 python geoParse.py
 
@@ -77,4 +78,5 @@ UWBMC Armigeres subalbatus 18K v1.0
 Chr. Hansen A/S_Bifidobacterium animalis subsp lactis BB12_1689_v1.0
 
 AGRF Leptospira interrogans spotted oligo array
-#### --------------------------------
+
+--------------------------------
