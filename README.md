@@ -37,7 +37,7 @@ youreName.Variations()
 youreName.PrintAll()
 
 ## Code Examples:
-Once you have a youreName.py file created (mentioned in the 'how to use section')
+Once you have youreName.py file created (mentioned in the 'how to use section')
 
 1. To extract gene names:
 
