@@ -13,7 +13,7 @@ import requests, xmltodict, urllib2, json, os
 #=================
 
 def search_pdb(url_root='http://www.rcsb.org/pdb/rest/customReport.xml?'):
-#askes for ids and columns and prints the information about them arranged
+#askes for ids and columns and prints and returns the information about them arranged
 
 #    Parameter
 #    ----------
@@ -48,7 +48,7 @@ def search_pdb(url_root='http://www.rcsb.org/pdb/rest/customReport.xml?'):
         url_pdb = url_root + query_pdb #the final url
         d = requests.get(url_pdb) #download xml result of the url from pdb with wanted columns
         doc = xmltodict.parse(d.content)
-        print '\n',json.dumps(doc,indent=4)
+
         try:
           doc = doc['dataset']['record'] #puts the beginning in the dictionary
           ids = ids.split(",")
@@ -77,7 +77,6 @@ def search_pdb(url_root='http://www.rcsb.org/pdb/rest/customReport.xml?'):
                  output.write("%s\n" %(doc["dimEntity.structureId"]+": "+columns[j]+" in chain "+doc["dimEntity.chainId"]+": "+doc['dimEntity.%s' %column$
             j=j+1
  
-          #output.write("%s\n" %json.dumps(result_dict,indent=4, sort_keys=True))
           output.close()
           print '\n',json.dumps(result_dict,indent=4, sort_keys=True)
           print("\nthe results are also saved in output.txt\n")
@@ -87,7 +86,7 @@ def search_pdb(url_root='http://www.rcsb.org/pdb/rest/customReport.xml?'):
 
 
 def print_all(url_root='http://www.rcsb.org/pdb/rest/customReport.xml?'):
-#askes for ids and columns and prints the full records as a dictionary
+#askes for ids and columns and prints and returns the full records as a dictionary
 
 #    Parameter
 #    ----------
