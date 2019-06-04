@@ -59,6 +59,127 @@ the results are also saved in output.txt
 
 ------------------------------
 
+Enter the ids that you are interested in (separated by commas): 6QN9
+
+Enter the columns that you are interested in (separated by commas):
+ choose them from this link - https://www.rcsb.org/pdb/results/reportField.do: plasmid,doi
+
+{
+
+    "6DJH: compound in chain A": "Tyrosyl-DNA phosphodiesterase 1",
+    
+    "6DJH: compound in chain B": "Tyrosyl-DNA phosphodiesterase 1",
+    
+    "6QN9: compound in chain H": "Heavy chain",
+    
+    "6QN9: compound in chain L": "light chain"
+    
+}
+
+the results are also saved in output.txt
+
+---------------------------------------
+
 ### print_all()
 ---------------------------
+
+Enter the ids that you are interested in (separated by commas): 6EGC
+
+Enter the columns that you are interested in (separated by commas):
+ choose them from this link - https://www.rcsb.org/pdb/results/reportField.do: atomSiteCount
+
+{
+
+    "dimStructure.structureId": "6EGC",
+    
+    "dimStructure.atomSiteCount": "1134"
+
+}
+
+the results are also saved in output.txt
+
+-----------------------------------
+
+Enter the ids that you are interested in (separated by commas): 6QN9,6DJH
+
+Enter the columns that you are interested in (separated by commas):
+ choose them from this link - https://www.rcsb.org/pdb/results/reportField.do: ligandName
+
+[
+
+    {
+    
+        "dimEntity.structureId": "6QN9",
+        
+        "dimEntity.chainId": "L",
+        
+        "dimEntity.ligandName": "GLYCEROL",
+        
+    },
+    
+    {
+    
+        "dimEntity.structureId": "6QN9",
+        
+        "dimEntity.chainId": "H",
+        
+        "dimEntity.ligandName": "null",
+
+    },
+    
+    {
+    
+        "dimEntity.structureId": "6QN9",
+        
+        "dimEntity.chainId": "L",
+        
+        "dimEntity.ligandName": "SULFATE ION",
+        
+    },
+    
+    {
+    
+        "dimEntity.structureId": "6DJH",
+        
+        "dimEntity.chainId": "B",
+        
+        "dimEntity.ligandName": "8-bromo-4-oxo-1,4-dihydroquinoline-3-carboxylic acid",
+
+    },
+    
+    {
+    
+        "dimEntity.structureId": "6DJH",
+        
+        "dimEntity.chainId": "A",
+        
+        "dimEntity.ligandName": "1,2-ETHANEDIOL",
+        
+    },
+    
+    {
+    
+        "dimEntity.structureId": "6DJH",
+        
+        "dimEntity.chainId": "B",
+        
+        "dimEntity.ligandName": "1,2-ETHANEDIOL",
+
+    },
+    
+    {
+        "dimEntity.structureId": "6DJH",
+        
+        "dimEntity.chainId": "A",
+        
+        "dimEntity.ligandName": "8-bromo-4-oxo-1,4-dihydroquinoline-3-carboxylic acid",
+
+    }
+    
+]
+
+the results are also saved in output.txt
+
+
+
 
