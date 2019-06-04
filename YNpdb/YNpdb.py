@@ -27,9 +27,9 @@ def search_pdb(url_root='http://www.rcsb.org/pdb/rest/customReport.xml?'):
 
 #    Example
 #    --------
-#    Enter the ids that you are interested in (separated by commas): "6Q9Q"
+#    Enter the ids that you are interested in (separated by commas): 6Q9Q
 #    Enter the columns that you are interested in (separated by commas):
-#    choose them from this link - https://www.rcsb.org/pdb/results/reportField.do: "ligandName"
+#    choose them from this link - https://www.rcsb.org/pdb/results/reportField.do: ligandName
 
 #{
 #    "6Q9Q: ligandName in chain A": "1,4,7,10,13,16-HEXAOXACYCLOOCTADECANE",
@@ -96,9 +96,9 @@ def print_all(url_root='http://www.rcsb.org/pdb/rest/customReport.xml?'):
 
 #    Example
 #    --------
-#    Enter the ids that you are interested in (separated by commas): "5NUU"
+#    Enter the ids that you are interested in (separated by commas): 5NUU
 #    Enter the columns that you are interested in (separated by commas):
-#    choose them from this link - https://www.rcsb.org/pdb/results/reportField.do: "taxonomyId"
+#    choose them from this link - https://www.rcsb.org/pdb/results/reportField.do: taxonomyId
 
 #{
 #    "dimEntity.structureId": "5NUU",
