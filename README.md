@@ -12,6 +12,9 @@ YNpdb includs two functions:
 For using my library you must install the libraries: requests, xmltodict, urllib2, json, os
 ## Examples
 ### search_pdb()
+
+search = YNpdb.search_pdb()
+
 ---------------------------
 {
 
@@ -95,6 +98,9 @@ For using my library you must install the libraries: requests, xmltodict, urllib
 ---------------------------------------
 
 ### print_all()
+
+all = YNpdb.print_all()
+
 ---------------------------
 {
 
