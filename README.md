@@ -18,7 +18,7 @@ from Bio.PDB import *
 import json, os
 
 ## How to use
-1. you need to create python file
+1. you need to create python file (for example: main_func_NCBI_nucleotide_API.py)
 
 2. you need to install my class: from func_NCBI_nucleotide_API import *
 
@@ -31,6 +31,23 @@ import json, os
 6. you can also use search and fetch function with or without printing.
 
 ## Examples
+---------------------------------
 
+the function: get_molecule()
 
+---------------------------------
+
+you need to write at your file: print A.get_molecule()
+
+then: python main_func_NCBI_nucleotide_API.py
+
+you get:
+
+Do you want to search? (y/n):    y
+
+Write your ret_max:    4
+
+Write your term:    cftr
+
+mRNA
 
