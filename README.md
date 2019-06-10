@@ -119,4 +119,40 @@ mRNA
 
 --------------------------------
 
-continue with more examples.
+the function: get_sequence()
+
+--------------------------------
+
+you need to write at your file: print A.get_sequence()
+
+then: python main_func_NCBI_nucleotide_API.py
+
+you get:
+
+Do you want to search? (y/n):    y
+
+Write your ret_max:    2
+
+Write your term:    mus musculus
+
+gtgagtacttggaaaggactcggaaagatgcatctagtcttgctgatctgcctgctggcaggaaccactgggaagagctgcctccgctgctggccagagctgctcgccatgatggactatgacctgca
+
+ggtgctctggggcagtccagggccacctacagaactctcacaaagcctacactcctttttcctggagaataacaccatattcttgccctggtatcttgctcgagacaatttggatgaggaaacagcta
+
+catttttcacccaagtagacaacgccattaaaaagctgagggatgataagccagcactgcttaatgagattcgggttcagaagagtctcctggacgagaggctgaaggagaagtcccaggacctgatg
+
+cagaaggtctgcaatgagtcctgtgacatcctctccgaaatggaagtcactgcatgtgctgactgccggaagttctacctgtcctgcaatgactctaccttgtgcacagccagggtcacatggagcta
+
+caagtgggttgtagtccttttcaccatcttgatgttcctggctgttgctggcattggtggatactttttctggctccagaagaggtcagcggaggctgataagagaagagacagcaagttacttcctt
+
+caggaaacgaccagcaactagggcagcaaccagagcagctgccagagcccatgctgtctgaaagctgtctctggccctggtgactctctattgcacaaagcactccttcctgggacctggagagctct
+
+gaggccctgcagctctgcagacaagactgatatattctctctctctctctctctctctccctccctccctccctccctcccttcctccctccctccctcctaatacatactcctttgtaaatagttat
+
+taaaaacatttttcctatata
+
+--------------------------------
+
+the function: 
+
+--------------------------------
