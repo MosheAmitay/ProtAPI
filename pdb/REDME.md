@@ -14,8 +14,11 @@ For using my library you must install the libraries: requests, xmltodict, urllib
 ### search_pdb()
 
 1.
+
 ids = ['5NUU']
+
 columns = ['taxonomyId']
+
 dict_1 = YNpdb.search_pdb(ids, columns) 
 
 {
@@ -32,8 +35,11 @@ dict_1 = YNpdb.search_pdb(ids, columns)
 
 -----------------------------
 2.
+
 ids = ['6GUS']
+
 columns = ['chainLength','ligandId']
+
 dict_1 = YNpdb.search_pdb(ids, columns)
 
 {
@@ -52,8 +58,11 @@ dict_1 = YNpdb.search_pdb(ids, columns)
 
 -----------------------------
 3.
+
 ids = ['6EGC']
+
 columns = ['sequence']
+
 dict_1 = YNpdb.search_pdb(ids, columns)
 
 {
@@ -70,8 +79,11 @@ dict_1 = YNpdb.search_pdb(ids, columns)
 
 ------------------------------
 4.
+
 ids = ['6DJH','6QN9']
+
 columns = ['compound']
+
 dict_1 = YNpdb.search_pdb(ids, columns)
 
 {
@@ -97,8 +109,11 @@ dict_1 = YNpdb.search_pdb(ids, columns)
 ### print_all()
 
 1.
+
 ids = ['6EGC']
+
 columns = ['atomSiteCount']
+
 dict_1 = YNpdb.print_all(ids, columns)
 
 {
@@ -118,8 +133,11 @@ dict_1 = YNpdb.print_all(ids, columns)
 
 -----------------------------------
 2.
+
 ids = ['6QN9','6DJH']
+
 columns = ['ligandName']
+
 dict_1 = YNpdb.print_all(ids, columns)
 
 {
