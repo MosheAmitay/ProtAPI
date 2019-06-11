@@ -2,9 +2,9 @@
 A Python Rest_API for the RCSB Protein Data Bank
 
 YNpdb includs two functions:
-1. search_pdb()- askes for pdb ids and columns(records) of interest 
+1. search_pdb()- gets pdb ids and columns(records) of interest 
                  and prints and returns the information about them arranged as a dictionary.
-2. print_all()- askes for pdb ids and columns(records) of interest 
+2. print_all()- gets pdb ids and columns(records) of interest 
                 and prints and returns the full records as a dictionary.
                 
 
@@ -13,19 +13,12 @@ For using my library you must install the libraries: requests, xmltodict, urllib
 ## Examples
 ### search_pdb()
 
-The code for this function:
-
-search = YNpdb.search_pdb()
-
-#### outputs
-
 1.
+ids = ['5NUU']
+columns = ['taxonomyId']
+dict_1 = YNpdb.search_pdb(ids, columns) 
+
 {
-
-    Enter the ids that you are interested in (separated by commas): 5NUU
-
-    Enter the columns that you are interested in (separated by commas):
-     choose them from this link - https://www.rcsb.org/pdb/results/reportField.do: taxonomyId
 
     {
 
@@ -39,12 +32,11 @@ search = YNpdb.search_pdb()
 
 -----------------------------
 2.
+ids = ['6GUS']
+columns = ['chainLength','ligandId']
+dict_1 = YNpdb.search_pdb(ids, columns)
+
 {
-
-      Enter the ids that you are interested in (separated by commas): 6GUS
-
-      Enter the columns that you are interested in (separated by commas):
-       choose them from this link - https://www.rcsb.org/pdb/results/reportField.do: chainLength,ligandId
 
     {
 
@@ -60,12 +52,11 @@ search = YNpdb.search_pdb()
 
 -----------------------------
 3.
-{
+ids = ['6EGC']
+columns = ['sequence']
+dict_1 = YNpdb.search_pdb(ids, columns)
 
-    Enter the ids that you are interested in (separated by commas): 6EGC
-    
-    Enter the columns that you are interested in (separated by commas):
-     choose them from this link - https://www.rcsb.org/pdb/results/reportField.do: sequence
+{
 
     {
 
@@ -79,12 +70,11 @@ search = YNpdb.search_pdb()
 
 ------------------------------
 4.
+ids = ['6DJH','6QN9']
+columns = ['compound']
+dict_1 = YNpdb.search_pdb(ids, columns)
+
 {
-
-    Enter the ids that you are interested in (separated by commas): 6QN9
-
-    Enter the columns that you are interested in (separated by commas):
-     choose them from this link - https://www.rcsb.org/pdb/results/reportField.do: plasmid,doi
 
     {
 
@@ -106,19 +96,13 @@ search = YNpdb.search_pdb()
 
 ### print_all()
 
-The code for this function:
-
-all = YNpdb.print_all()
-
-#### outputs
-
 1.
+ids = ['6EGC']
+columns = ['atomSiteCount']
+dict_1 = YNpdb.print_all(ids, columns)
+
 {
 
-    Enter the ids that you are interested in (separated by commas): 6EGC
-
-    Enter the columns that you are interested in (separated by commas):
-    choose them from this link - https://www.rcsb.org/pdb/results/reportField.do: atomSiteCount
 
     {
 
@@ -134,12 +118,11 @@ all = YNpdb.print_all()
 
 -----------------------------------
 2.
+ids = ['6QN9','6DJH']
+columns = ['ligandName']
+dict_1 = YNpdb.print_all(ids, columns)
+
 {
-
-    Enter the ids that you are interested in (separated by commas): 6QN9,6DJH
-
-    Enter the columns that you are interested in (separated by commas):
-    choose them from this link - https://www.rcsb.org/pdb/results/reportField.do: ligandName
 
     [
 
