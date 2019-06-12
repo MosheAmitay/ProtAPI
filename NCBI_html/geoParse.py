@@ -42,7 +42,11 @@ def parseSRX(acc):
         if soup.find_all("div"):
                 for element in soup.find_all("div"):
                         if field in element.text:
-                                print element.span.contents[0]
+				if field=='Library':
+					for item in element.div:
+                                                print item.contents[0]+item.span.text
+                                else:
+					print element.span.contents[0]
 
 #this is a redirection function for future expansions
 def parse(db, accFile, field):
