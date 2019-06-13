@@ -41,12 +41,21 @@ def parseSRX(acc):
         soup=bs(source,'lxml') #create beautiful soup object
         if soup.find_all("div"):
                 for element in soup.find_all("div"):
-                        if field in element.text:
-				if field=='Library':
-					for item in element.div:
-                                                print item.contents[0]+item.span.text
+                        if field in element.text:if field=='Library':
+                                if field=='Library':
+                                        for item in element.div:
+                                               output_file.write("%s\n" % strip_non_ascii(item.contents[0]+item.span.text))
+                                elif field=='Runs':
+                                        output_file.write("%s\n" % strip_non_ascii(element.span.contents[0])) 
+                                        table=element.next_sibling
+                                        for row in range(len(table.tbody.contents)):
+                                                for col in range(len(table.thead.tr.contents)):
+                                                        if col == 0:
+                                                                output_file.write("%s\n" % strip_non_ascii(table.thead.tr.contents[col].text+" #"+str(row+1)+": "+table.tbody.contents[row].contents[col].text))
+                                                        else:
+                                                                output_file.write("%s\n" % strip_non_ascii(table.thead.tr.contents[col].text+": "+table.tbody.contents[row].contents[col].text))
                                 else:
-					print element.span.contents[0]
+					output_file.write("%s\n" % strip_non_ascii(element.span.contents[0]))
 
 #this is a redirection function for future expansions
 def parse(db, accFile, field):
