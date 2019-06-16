@@ -1,17 +1,17 @@
 import requests
 import xmltodict
 import json
+import pandas as pd
 
 __metaclass__=type
 
-class Uniprot:
+class UniprotApi:
 	entry=[]
 	accession=[]
-	def __init__(self):
-                GivenIds=raw_input("Please Enter An Accession Numbers (seperated by spaces):    ")
-                list =GivenIds.split()
+	list=[]
+	def __init__(self,accList):
 		base_uni='https://www.uniprot.org/uniprot/'
-		for acc in list:
+		for acc in accList:
 			self.accession.append(acc)
 			query="?query=id:"+acc+"&columns=id,entry name&limit=1&format=xml"
 			url_general =  base_uni + query
