@@ -24,9 +24,11 @@ This class is made up of 8 definitions:
 1.	Create a youreName.py file
 2.	Include the following import:
 from UniprotApi import *
-3.	Create a variable for the UniprotApi class:
-youreName = UniprotApi()
-4.	Use the variable to call one or all of the functions mentioned in the description:
+3. create a list containing all of the wanted accession numbers. example:
+   my_list=["Q14533","Q3TTY5","P08069","Q60751","P69892"]
+4.	Create a variable for the UniprotApi class like so:
+    youreName = UniprotApi(my_list)
+5.	Use the variable to call one or all of the functions mentioned in the description:
 youreName.GeneName()
 youreName.Title()
 youreName.ProteinName()
@@ -45,7 +47,7 @@ youreName.py file will include:
 
 from UniprotApi import *
 
-VarName = UniprotApi()
+VarName = UniprotApi(my_list)
 
 VarName.GeneName()
 
@@ -53,7 +55,6 @@ you will run youreName.py in the linux window:
 
 python youreName.py
 
-Please Enter Accession Numbers (seperated by spaces): Q14533 Q3TTY5 P08069 Q60751 P69892
 
 (the results you will get:)
 
@@ -73,7 +74,7 @@ youreName.py will include:
 
 from UniprotApi import *
 
-VarName = UniprotApi()
+VarName = UniprotApi(my_list)
 
 VarName.ProteinName()
 
@@ -81,7 +82,6 @@ you will run youreName.py in the linux window:
 
 python youreName.py
 
-Please Enter Accession Numbers (seperated by spaces): Q14533 Q3TTY5 P08069 Q60751 P69892
 
 (the results you will get:)
 
@@ -101,7 +101,7 @@ youreName.py will include:
 
 from UniprotApi import *
 
-VarName = UniprotApi()
+VarName = UniprotApi(my_list)
 
 VarName.PrintAll()
 
@@ -109,7 +109,6 @@ you will run youreName.py in the linux window:
 
 python youreName.py
 
-Please Enter Accession Numbers (seperated by spaces): Q14533 Q3TTY5 P08069 Q60751 P69892
 
 (the results you will get:)
 
