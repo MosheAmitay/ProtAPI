@@ -6,12 +6,6 @@
 
 import requests, xmltodict, urllib2, json, os
 
-
-
-#=================
-#Functions for looking up information given PDB ids and columns
-#=================
-
 def search_pdb(ids, columns, url_root='http://www.rcsb.org/pdb/rest/customReport.xml?'):
 #askes for ids and columns and prints the information about them arranged
 
@@ -81,52 +75,4 @@ def search_pdb(ids, columns, url_root='http://www.rcsb.org/pdb/rest/customReport
         except:
           print '\n',"There is no information abuot this column/s"
         return result_dict
-
-
-def print_all(ids, columns, url_root='http://www.rcsb.org/pdb/rest/customReport.xml?'):
-#askes for ids and columns and prints the full records as a dictionary
-
-#    Parameter
-#    ----------
-#    url_root : string
-#       The string root of the specific url for the request type
-#    ids : list
-#       A list of strings of pdb ids
-
-#    columns : list
-#       A list of strings of pdb columns
-
-
-#    Returns & Prints
-#    -----------------
-#    doc : dictionary
-#    A dictionary of the full records
-
-#    Example
-#    --------
-#{
-#    "dimEntity.structureId": "5NUU",
-#    "dimEntity.chainId": "A",
-#    "dimEntity.taxonomyId": "7787"
-#}
-
-        str_ids = ','.join(ids) #converts the list of ids into a string
-        str_columns = ','.join(columns) #converts the list of columns into a string
-
-        #pdbids- the ids of the entry, customReportColumns-the values that you want to find, format- returnd type
-        query_pdb="pdbids=%s&customReportColumns=%s&format=xml" %(str_ids,str_columns)
-        url_pdb = url_root + query_pdb #the final url
-        d = requests.get(url_pdb) #download xml result of the url from pdb with wanted columns
-        doc = xmltodict.parse(d.content)
-        try:
-          doc = doc['dataset']['record'] #puts the beginning in the dictionary
-          output=open('output.txt', 'w') #a file for saveing the results
-          output.write("\n%s" %json.dumps(doc,indent=4))
-          output.close()
-          print '\n',json.dumps(doc,indent=4)
-          print("\nthe results are also saved in output.txt\n")
-        except:
-          print '\n',"There is no information abuot this column/s"
-        return doc
-
 
