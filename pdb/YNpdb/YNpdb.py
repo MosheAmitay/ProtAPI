@@ -43,9 +43,9 @@ def search_pdb(ids, columns, url_root='http://www.rcsb.org/pdb/rest/customReport
         url_pdb = url_root + query_pdb #the final url
         d = requests.get(url_pdb) #download xml result of the url from pdb with wanted columns
         doc = xmltodict.parse(d.content)
+        result_dict = dict()
         try:
           doc = doc['dataset']['record'] #puts the beginning in the dictionary
-          result_dict = dict()
           j = 0
           output=open('output.txt', 'w') #a file for saveing the results
           while j < len(columns):
