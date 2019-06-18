@@ -1,13 +1,11 @@
 # YNpdb
 A Python Rest_API for the RCSB Protein Data Bank
 
-YNpdb includs two functions:
-1. search_pdb()- gets a list of pdb ids and a list of columns(records) of interest 
-                 and prints and returns the information about them arranged as a dictionary.
-2. print_all()- gets a list of pdb ids and a list of pdb ids and columns(records) of interest 
-                and prints and returns the full records as a dictionary.
-                
+YNpdb includs one function:
 
+search_pdb()- gets a list of pdb ids and a list of columns(records) of interest 
+                 and prints and returns the information about them arranged as a dictionary.
+                
 ## Install
 For using my library you must install the libraries: requests, xmltodict, urllib2, json, os
 ## Examples
@@ -103,119 +101,3 @@ dict_1 = YNpdb.search_pdb(ids, columns)
     the results are also saved in output.txt
 
 }
-
----------------------------------------
-
-### print_all()
-
-1.
-
-ids = ['6EGC']
-
-columns = ['atomSiteCount']
-
-dict_1 = YNpdb.print_all(ids, columns)
-
-{
-
-
-    {
-
-    "dimStructure.structureId": "6EGC",
-    
-    "dimStructure.atomSiteCount": "1134"
-
-    }
-
-    the results are also saved in output.txt
-
-}
-
------------------------------------
-2.
-
-ids = ['6QN9','6DJH']
-
-columns = ['ligandName']
-
-dict_1 = YNpdb.print_all(ids, columns)
-
-{
-
-    [
-
-        {
-    
-        "dimEntity.structureId": "6QN9",
-        
-        "dimEntity.chainId": "L",
-        
-        "dimEntity.ligandName": "GLYCEROL",
-        
-        },
-    
-        {
-    
-        "dimEntity.structureId": "6QN9",
-        
-        "dimEntity.chainId": "H",
-        
-        "dimEntity.ligandName": "null",
-
-        },
-    
-        {
-    
-        "dimEntity.structureId": "6QN9",
-        
-        "dimEntity.chainId": "L",
-        
-        "dimEntity.ligandName": "SULFATE ION",
-        
-        },
-    
-        {
-    
-        "dimEntity.structureId": "6DJH",
-        
-        "dimEntity.chainId": "B",
-        
-        "dimEntity.ligandName": "8-bromo-4-oxo-1,4-dihydroquinoline-3-carboxylic acid",
-
-        },
-    
-        {
-    
-        "dimEntity.structureId": "6DJH",
-        
-        "dimEntity.chainId": "A",
-        
-        "dimEntity.ligandName": "1,2-ETHANEDIOL",
-        
-        },
-    
-        {
-    
-        "dimEntity.structureId": "6DJH",
-        
-        "dimEntity.chainId": "B",
-        
-        "dimEntity.ligandName": "1,2-ETHANEDIOL",
-
-        },
-    
-        {
-        "dimEntity.structureId": "6DJH",
-        
-        "dimEntity.chainId": "A",
-        
-        "dimEntity.ligandName": "8-bromo-4-oxo-1,4-dihydroquinoline-3-carboxylic acid",
-
-        }
-    
-    ]
-
-    the results are also saved in output.txt
-
-}
-
