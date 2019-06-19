@@ -14,7 +14,9 @@ For using my library you must install the libraries: requests, xmltodict, urllib
 1.
 
 ids = ['6QN9']
+
 columns = ['compound','ligandId']
+
 dict = YNpdb.search_pdb(ids, columns)
 
 {
