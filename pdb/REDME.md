@@ -3,73 +3,83 @@ A Python Rest_API for the RCSB Protein Data Bank
 
 YNpdb includs one function:
 
-search_pdb()- askes for pdb ids and columns(records) of interest 
+search_pdb()- gets a list of pdb ids and a list of columns(records) of interest 
                  and prints and returns the information about them arranged as a dictionary.
                 
-
 ## Install
 For using my library you must install the libraries: requests, xmltodict, urllib2, json, os
 ## Examples
 ### search_pdb()
 
-The code for this function:
-
-search = YNpdb.search_pdb()
-
-#### outputs
-
 1.
+
+ids = ['6QN9']
+
+columns = ['compound','ligandId']
+
+dict = YNpdb.search_pdb(ids, columns)
+
 {
-
-    Enter the ids that you are interested in (separated by commas): 5NUU
-
-    Enter the columns that you are interested in (separated by commas):
-     choose them from this link - https://www.rcsb.org/pdb/results/reportField.do: taxonomyId
 
     {
 
-     "5NUU: taxonomyId in chain A": "7787"
+    "6QN9: compound 1 in chain H": "Heavy chain",
+    
+    "6QN9: compound 1 in chain L": "light chain",
+    
+    "6QN9: ligandId 1 in chain H": "null",
+    
+    "6QN9: ligandId 1 in chain L": "GOL",
+    
+    "6QN9: ligandId 2 in chain L": "SO4"
     
     }
 
     the results are also saved in output.txt
-
+    
 }
-
 
 -----------------------------
 2.
+
+ids = ['6GUS']
+
+columns = ['chainLength','ligandId']
+
+dict = YNpdb.search_pdb(ids, columns)
+
 {
 
-      Enter the ids that you are interested in (separated by commas): 6GUS
+     {
 
-      Enter the columns that you are interested in (separated by commas):
-       choose them from this link - https://www.rcsb.org/pdb/results/reportField.do: chainLength,ligandId
-
-    {
-
-    "6GUS: chainLength in chain A": "155",
+     "6GUS: chainLength 1 in chain A": "155",
     
-    "6GUS: ligandId in chain A": "SO4"
+     "6GUS: ligandId 1 in chain A": "CL",
     
-    }
+     "6GUS: ligandId 2 in chain A": "GOL",
+    
+     "6GUS: ligandId 3 in chain A": "SO4"
+    
+     }
 
-    the results are also saved in output.txt
-    
+     the results are also saved in output.txt
+
 }
 
 -----------------------------
 3.
-{
 
-    Enter the ids that you are interested in (separated by commas): 6EGC
-    
-    Enter the columns that you are interested in (separated by commas):
-     choose them from this link - https://www.rcsb.org/pdb/results/reportField.do: sequence
+ids = ['6EGC']
+
+columns = ['sequence']
+
+dict = YNpdb.search_pdb(ids, columns)
+
+{
 
     {
 
-    "6EGC: sequence in chain A":         "GSHMTRTEIIRELERSLREQEELAKRLKELLRELERLQREGSSDEDVRELLREIKELVEEIEKLAREQKYLVEELKRQQGPPGNEIIRELERSLREQEELAKRLKELLRELERLQREGSSDEDVRELLREIKELVEEIEKLAREQKYLVEELKRQD"
+    "6EGC: sequence 1 in chain A":         "GSHMTRTEIIRELERSLREQEELAKRLKELLRELERLQREGSSDEDVRELLREIKELVEEIEKLAREQKYLVEELKRQQGPPGNEIIRELERSLREQEELAKRLKELLRELERLQREGSSDEDVRELLREIKELVEEIEKLAREQKYLVEELKRQD"
 
     }
 
@@ -79,22 +89,87 @@ search = YNpdb.search_pdb()
 
 ------------------------------
 4.
+
+ids = ['6DJH','6QN9']
+
+columns = ['compound']
+
+dict_1 = YNpdb.search_pdb(ids, columns)
+
 {
-
-    Enter the ids that you are interested in (separated by commas): 6QN9
-
-    Enter the columns that you are interested in (separated by commas):
-     choose them from this link - https://www.rcsb.org/pdb/results/reportField.do: plasmid,doi
 
     {
 
-    "6DJH: compound in chain A": "Tyrosyl-DNA phosphodiesterase 1",
+    "6DJH: compound 1 in chain A": "Tyrosyl-DNA phosphodiesterase 1",
     
-    "6DJH: compound in chain B": "Tyrosyl-DNA phosphodiesterase 1",
+    "6DJH: compound 1 in chain B": "Tyrosyl-DNA phosphodiesterase 1",
     
-    "6QN9: compound in chain H": "Heavy chain",
+    "6QN9: compound 1 in chain H": "Heavy chain",
     
-    "6QN9: compound in chain L": "light chain"
+    "6QN9: compound 1 in chain L": "light chain"
+    
+    }
+
+    the results are also saved in output.txt
+
+}
+
+-----------------------------------------------
+5.
+
+ids = ['6NR9']
+
+columns = ['chainLength']
+
+dict = YNpdb.search_pdb(ids, columns)
+
+{
+
+    {
+
+    "6NR9: chainLength 1 in chain 1": "107",
+    
+    "6NR9: chainLength 1 in chain 2": "103",
+    
+    "6NR9: chainLength 1 in chain 3": "132",
+    
+    "6NR9: chainLength 1 in chain 4": "104",
+    
+    "6NR9: chainLength 1 in chain 5": "127",
+    
+    "6NR9: chainLength 1 in chain 6": "102",
+    
+    "6NR9: chainLength 1 in chain A": "534",
+    
+    "6NR9: chainLength 1 in chain B": "509",
+    
+    "6NR9: chainLength 1 in chain C": "513",
+    
+    "6NR9: chainLength 1 in chain D": "514",
+    
+    "6NR9: chainLength 1 in chain E": "517",
+    
+    "6NR9: chainLength 1 in chain F": "515",
+    
+    "6NR9: chainLength 1 in chain G": "514",
+    
+    "6NR9: chainLength 1 in chain H": "514",
+    
+    "6NR9: chainLength 1 in chain I": "534",
+    
+    "6NR9: chainLength 1 in chain J": "509",
+    
+    "6NR9: chainLength 1 in chain K": "513",
+    
+    "6NR9: chainLength 1 in chain L": "514",
+    
+    "6NR9: chainLength 1 in chain M": "517",
+    
+    "6NR9: chainLength 1 in chain N": "515",
+    
+    "6NR9: chainLength 1 in chain O": "514",
+    
+    "6NR9: chainLength 1 in chain P": "514"
     
     }
 
