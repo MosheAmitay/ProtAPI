@@ -35,12 +35,19 @@ def search_pdb(ids, columns, url_root='http://www.rcsb.org/pdb/rest/customReport
 #    Example
 #    --------
 
-#{
-#    "6Q9Q: ligandName in chain A": "1,4,7,10,13,16-HEXAOXACYCLOOCTADECANE",
-#    "6Q9Q: ligandName in chain B": "SULFATE ION",
-#    "6Q9Q: ligandName in chain C": "SULFATE ION",
-#    "6Q9Q: ligandName in chain D": "SULFATE ION"
-#}
+ids = ['6GUS']
+columns = ['chainLength','ligandId']
+dict = YNpdb.search_pdb(ids, columns)
+
+{
+     "6GUS: chainLength 1 in chain A": "155",
+     "6GUS: ligandId 1 in chain A": "CL",
+     "6GUS: ligandId 2 in chain A": "GOL",
+     "6GUS: ligandId 3 in chain A": "SO4"
+}
+
+the results are also saved in output.txt
+ 
         str_ids = ','.join(ids) #converts the list of ids into a string
         str_columns = ','.join(columns) #converts the list of columns into a string
 
