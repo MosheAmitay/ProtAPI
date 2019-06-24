@@ -2,7 +2,7 @@
 import requests #for communicating with web
 import pandas as pd #for managing data
 from bs4 import BeautifulSoup as bs #for scraping the web-pages
-
+import json
 #the function recieves a string and returns only ascii coded characters
 def strip_non_ascii(string):
     ''' Returns the string without non ASCII characters'''
@@ -24,14 +24,21 @@ def parseGeo(accFile, field):
             soup=bs(source,'lxml') #create beautiful soup object
             if soup.find_all("td"): #if the search exists
                     for element in soup.find_all("td"):
-                            if element.string==field & numFound==0: #find the wanted line
-                                    if field == "Samples":
-                                            print element.next_sibling.next_sibling
-                                            #all=""
-                                            #for sample in element.next_sibling.next_sibling:
-                                            #all=all+""
+                            if field in element.text and numFound==0 and not(element.strong): 
+                            #find the wanted line, and do not repeat for same field
+                            #also, an element with 'strog' attribute does not fit to our fields. (with exeption to the table, to be handled)
+                                    if "Samples" in field:
+                                            if "Samples (" in element.text: #must have a () with the number inside 
+                                                    all=""
+                                                    for sample in element.next_sibling.next_sibling.find_all('a'):
+                                                    #concatenate the strings from the a tags - the links
+                                                            all=all+sample.string+", "
+                                                            #print(sample.string)
+                                                    values[a+"_"+field]=strip_non_ascii(all[0:-2])
+                                                    output.write("%s\n" % strip_non_ascii(all[0:-2]))
+                                                    numFound=numFound+1
                                     else:
-				            #put the information into the file or dictionary
+				                                    #put the information into the file or dictionary
                                             numFound=numFound+1
                                             values[a+"_"+field] = strip_non_ascii(element.next_sibling.next_sibling.text)
                                             output.write("%s\n" % strip_non_ascii(element.next_sibling.next_sibling.text))
@@ -94,4 +101,4 @@ def parse(db, accFile, field):
 db = raw_input("please enter the database you need:   ")
 accFile = raw_input("please enter name of a file with the accessions:   ")
 field = raw_input("please enter the field your'e interested in extracting:   ")
-print parse(db, accFile, field)
+print json.dumps(parse(db, accFile, field), indent=4)
