@@ -176,3 +176,4 @@ dict = YNpdb.search_pdb(ids, columns)
     the results are also saved in output.txt
 
 }
+ 
